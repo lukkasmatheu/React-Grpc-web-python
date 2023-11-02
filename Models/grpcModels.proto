@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+message LoginRequest {
+  string name = 1;
+  string senha = 2;
+}
+
+message CreateUserRequest {
+  string name = 1;
+  string cargo = 2;
+  string senha = 3;
+}
+
+message History {
+  string action=1;
+  string date=2;
+  string reason = 3;
+}
+
+message Product {
+  string id=1;
+  string name=2;
+  string description=3;
+  string amount=4;
+  string price=5;
+  int32 minimalStorage=6;
+  repeated History history=7;
+}
+
+message MessageResponse {
+  string response = 1;
+}
+
+message RemoveProductRequest {
+  string id = 1;	
+  int32 quantity=2;
+}
+
+service LoginService {
+  rpc CreateUser(CreateUserRequest) returns (MessageResponse);
+  rpc Login (LoginRequest) returns (MessageResponse);
+}
+
+
+service ProductService {
+  rpc CreateProduct (Product) returns (MessageResponse);
+  rpc UpdateProduct (Product) returns (MessageResponse);
+  rpc RemoveProduct (RemoveProductRequest) returns (MessageResponse);
+}
+
+
