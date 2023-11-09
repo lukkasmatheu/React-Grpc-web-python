@@ -27,8 +27,21 @@ message Product {
   repeated History history=7;
 }
 
+
+message ReportRequest {
+  int32 period= 1;
+}
+
+message ReportResponse {
+  repeated string message= 1;
+}
+
 message MessageResponse {
   string response = 1;
+}
+
+message Empty{
+
 }
 
 message RemoveProductRequest {
@@ -46,6 +59,12 @@ service ProductService {
   rpc CreateProduct (Product) returns (MessageResponse);
   rpc UpdateProduct (Product) returns (MessageResponse);
   rpc RemoveProduct (RemoveProductRequest) returns (MessageResponse);
+}
+
+service ReportService{
+  rpc GetStock(Empty) returns (ReportResponse);
+  rpc GetProductWithoutStock(ReportRequest) returns (ReportResponse);
+  rpc GetProductWithoutOut(ReportRequest) returns (ReportResponse);
 }
 
 

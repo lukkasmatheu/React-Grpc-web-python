@@ -224,3 +224,130 @@ class ProductService(object):
             grpcModels__pb2.MessageResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+
+class ReportServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.GetStock = channel.unary_unary(
+                '/ReportService/GetStock',
+                request_serializer=grpcModels__pb2.Empty.SerializeToString,
+                response_deserializer=grpcModels__pb2.ReportResponse.FromString,
+                )
+        self.GetProductWithoutStock = channel.unary_unary(
+                '/ReportService/GetProductWithoutStock',
+                request_serializer=grpcModels__pb2.ReportRequest.SerializeToString,
+                response_deserializer=grpcModels__pb2.ReportResponse.FromString,
+                )
+        self.GetProductWithoutOut = channel.unary_unary(
+                '/ReportService/GetProductWithoutOut',
+                request_serializer=grpcModels__pb2.ReportRequest.SerializeToString,
+                response_deserializer=grpcModels__pb2.ReportResponse.FromString,
+                )
+
+
+class ReportServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def GetStock(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetProductWithoutStock(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetProductWithoutOut(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_ReportServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'GetStock': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetStock,
+                    request_deserializer=grpcModels__pb2.Empty.FromString,
+                    response_serializer=grpcModels__pb2.ReportResponse.SerializeToString,
+            ),
+            'GetProductWithoutStock': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetProductWithoutStock,
+                    request_deserializer=grpcModels__pb2.ReportRequest.FromString,
+                    response_serializer=grpcModels__pb2.ReportResponse.SerializeToString,
+            ),
+            'GetProductWithoutOut': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetProductWithoutOut,
+                    request_deserializer=grpcModels__pb2.ReportRequest.FromString,
+                    response_serializer=grpcModels__pb2.ReportResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'ReportService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+ # This class is part of an EXPERIMENTAL API.
+class ReportService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def GetStock(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/ReportService/GetStock',
+            grpcModels__pb2.Empty.SerializeToString,
+            grpcModels__pb2.ReportResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetProductWithoutStock(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/ReportService/GetProductWithoutStock',
+            grpcModels__pb2.ReportRequest.SerializeToString,
+            grpcModels__pb2.ReportResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetProductWithoutOut(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/ReportService/GetProductWithoutOut',
+            grpcModels__pb2.ReportRequest.SerializeToString,
+            grpcModels__pb2.ReportResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

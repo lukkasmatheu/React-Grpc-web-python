@@ -51,11 +51,27 @@ class Product(_message.Message):
     history: _containers.RepeatedCompositeFieldContainer[History]
     def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., amount: _Optional[str] = ..., price: _Optional[str] = ..., minimalStorage: _Optional[int] = ..., history: _Optional[_Iterable[_Union[History, _Mapping]]] = ...) -> None: ...
 
+class ReportRequest(_message.Message):
+    __slots__ = ["period"]
+    PERIOD_FIELD_NUMBER: _ClassVar[int]
+    period: int
+    def __init__(self, period: _Optional[int] = ...) -> None: ...
+
+class ReportResponse(_message.Message):
+    __slots__ = ["message"]
+    MESSAGE_FIELD_NUMBER: _ClassVar[int]
+    message: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, message: _Optional[_Iterable[str]] = ...) -> None: ...
+
 class MessageResponse(_message.Message):
     __slots__ = ["response"]
     RESPONSE_FIELD_NUMBER: _ClassVar[int]
     response: str
     def __init__(self, response: _Optional[str] = ...) -> None: ...
+
+class Empty(_message.Message):
+    __slots__ = []
+    def __init__(self) -> None: ...
 
 class RemoveProductRequest(_message.Message):
     __slots__ = ["id", "quantity"]

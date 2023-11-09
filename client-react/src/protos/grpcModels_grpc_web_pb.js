@@ -430,5 +430,240 @@ proto.ProductServicePromiseClient.prototype.removeProduct =
 };
 
 
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.ReportServiceClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.ReportServicePromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.Empty,
+ *   !proto.ReportResponse>}
+ */
+const methodDescriptor_ReportService_GetStock = new grpc.web.MethodDescriptor(
+  '/ReportService/GetStock',
+  grpc.web.MethodType.UNARY,
+  proto.Empty,
+  proto.ReportResponse,
+  /**
+   * @param {!proto.Empty} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ReportResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.Empty} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ReportResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ReportResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ReportServiceClient.prototype.getStock =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ReportService/GetStock',
+      request,
+      metadata || {},
+      methodDescriptor_ReportService_GetStock,
+      callback);
+};
+
+
+/**
+ * @param {!proto.Empty} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ReportResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ReportServicePromiseClient.prototype.getStock =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ReportService/GetStock',
+      request,
+      metadata || {},
+      methodDescriptor_ReportService_GetStock);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ReportRequest,
+ *   !proto.ReportResponse>}
+ */
+const methodDescriptor_ReportService_GetProductWithoutStock = new grpc.web.MethodDescriptor(
+  '/ReportService/GetProductWithoutStock',
+  grpc.web.MethodType.UNARY,
+  proto.ReportRequest,
+  proto.ReportResponse,
+  /**
+   * @param {!proto.ReportRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ReportResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ReportRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ReportResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ReportResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ReportServiceClient.prototype.getProductWithoutStock =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ReportService/GetProductWithoutStock',
+      request,
+      metadata || {},
+      methodDescriptor_ReportService_GetProductWithoutStock,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ReportRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ReportResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ReportServicePromiseClient.prototype.getProductWithoutStock =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ReportService/GetProductWithoutStock',
+      request,
+      metadata || {},
+      methodDescriptor_ReportService_GetProductWithoutStock);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ReportRequest,
+ *   !proto.ReportResponse>}
+ */
+const methodDescriptor_ReportService_GetProductWithoutOut = new grpc.web.MethodDescriptor(
+  '/ReportService/GetProductWithoutOut',
+  grpc.web.MethodType.UNARY,
+  proto.ReportRequest,
+  proto.ReportResponse,
+  /**
+   * @param {!proto.ReportRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ReportResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ReportRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ReportResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ReportResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ReportServiceClient.prototype.getProductWithoutOut =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ReportService/GetProductWithoutOut',
+      request,
+      metadata || {},
+      methodDescriptor_ReportService_GetProductWithoutOut,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ReportRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ReportResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ReportServicePromiseClient.prototype.getProductWithoutOut =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ReportService/GetProductWithoutOut',
+      request,
+      metadata || {},
+      methodDescriptor_ReportService_GetProductWithoutOut);
+};
+
+
 module.exports = proto;
 
